@@ -35,9 +35,9 @@ int read_textfile(const char *filename, unsigned int letters)
 			buff++;
 		}
 	}
-	close(i);
+	j = close(i);
 	free(buffer);
-	if (i == -1)
+	if (j == -1)
 		return (0);
 	return (j);
 }
