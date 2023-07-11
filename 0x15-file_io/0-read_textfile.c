@@ -9,7 +9,8 @@
 int read_textfile(const char *filename, unsigned int letters)
 {
 	char *buffer, *buff;
-	int i = 0, j;
+	int i = 0;
+	size_t j;
 
 	if (filename == NULL || letters == 0)
 		return (0);
@@ -19,25 +20,10 @@ int read_textfile(const char *filename, unsigned int letters)
 	buffer = malloc(sizeof(char) * letters);
 	j = read(i, buffer, sizeof(*buffer) * letters);
 	buff = buffer;
-	if (i == 2)
-	{
-	while (*buff != '\0')
-	{
-		write(2, buff, 1);
-		buff++;
-	}
-	}
-	else
-	{
-		while (*buff != '\0')
-		{
-			write(1, buff, 1);
-			buff++;
-		}
-	}
-	j = close(i);
+	j = write(2, buff, j);
+	close(i);
 	free(buffer);
-	if (j == -1)
+	if (i == -1)
 		return (0);
 	return (j);
 }
