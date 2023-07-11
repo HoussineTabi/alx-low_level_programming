@@ -20,9 +20,9 @@ int read_textfile(const char *filename, unsigned int letters)
 	buffer = malloc(sizeof(char) * letters);
 	j = read(i, buffer, sizeof(*buffer) * letters);
 	buff = buffer;
-	j = write(2, buff, j);
+	j = write(STDOUT_FILENO, buff, j);
 	free(buffer);
-	close(i)
+	close(i);
 	if (i == -1)
 		return (0);
 	return (j);
