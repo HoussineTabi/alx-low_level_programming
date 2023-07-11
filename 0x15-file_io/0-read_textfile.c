@@ -21,7 +21,6 @@ int read_textfile(const char *filename, unsigned int letters)
 	j = read(i, buffer, sizeof(*buffer) * letters);
 	buff = buffer;
 	j = write(STDOUT_FILENO, buff, j);
-	free(buff);
 	free(buffer);
 	close(i)
 	if (i == -1)
