@@ -28,7 +28,7 @@ char *_strchr(char *s, char c)
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	return (NULL);
+	return (0);
 }
 /**
  * _strpbrk - does somthing else
