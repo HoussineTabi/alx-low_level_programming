@@ -10,25 +10,27 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t node;
+	hash_node_t *node = NULL;
 	hash_node_t *node_at_end = NULL;
 	unsigned long int index;
 
-	if (!key)
+	if (!ht || !key)
 		return (0);
-	node.key = (char *)strdup(key);
-	node.value = (char *)strdup(value);
-	node.next = NULL;
+	node = (void *)malloc(sizeof(hash_node_t));
+	if (!node)
+		return (NULL);
+	node->key = strdup(key);
+	node->value = strdup(value);
+	node->next = NULL;
 	index = key_index((unsigned char *)key, ht->size);
 	if (ht->array[index] == NULL)
-		ht->array[index] = &node;
+		ht->array[index] = node;
 	else
 	{
 		node_at_end = ht->array[index];
 		while (node_at_end->next)
 			node_at_end = node_at_end->next;
-
-		node_at_end->next = &node;
+		node_at_end->next = node;
 	}
 	return (1);
 }
