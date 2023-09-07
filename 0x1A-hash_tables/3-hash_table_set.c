@@ -10,10 +10,11 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t node, *node_at_end = NULL;
+	hash_node_t node;
+	hash_node_t *node_at_end = NULL;
 	unsigned long int index;
 
-	if (!ht || !key)
+	if (!ht || !key || !value)
 		return (0);
 	node.key = (char *)strdup(key);
 	node.value = (char *)strdup(value);
