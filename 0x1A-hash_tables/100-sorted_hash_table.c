@@ -1,6 +1,6 @@
 #include "hash_tables.h"
 /**
- * shash_table_t - creates a haash table
+ * shash_table_create - creates a haash table
  * @size: the siaze of the hash table
  *
  * Return: a pointer to the hash table or null in failed
@@ -23,6 +23,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 /**
  * shash_table_set - set an element into the hahs table
+ * @ht: pointer to the hash table
  * @key: the string key to make the index
  * @value: the value of the new hash node
  *
