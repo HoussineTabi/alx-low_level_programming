@@ -33,8 +33,23 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		node_at_end = ht->array[index];
 		while (node_at_end->next)
-			node_at_end = node_at_end->next;
-		node_at_end->next = node;
+		{
+			if (strcmp(node_at_end->key, key))
+				node_at_end = node_at_end->next;
+			else
+			{
+				free(node_at_end->value);
+				node_at_end->value = strdup(value);
+			}
+		}
+		if (node_at_end->next == NULL && strcmp(node_at_end->key, key))
+			node_at_end->next = node;
+		else 
+		{
+			free(node);
+			free(node_at_end->value);
+			node_at_end->value = strdup(value);
+		}
 	}
 	return (1);
 }
