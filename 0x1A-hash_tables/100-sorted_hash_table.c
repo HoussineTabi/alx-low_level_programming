@@ -45,7 +45,9 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (!ht->array[index])
 	{
 		if (!ht->shead)
+		{
 			ht->shead = node, ht->stail = node;
+		}
 		node->sprev = NULL;
 		node->snext = NULL;
 		ht->array[index] = node;
@@ -55,7 +57,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		ht->stail->snext = node;
 		node->sprev = ht->stail;
 		node->snext = (NULL);
-		ht->stail = node;
+		ht->stail = ht->stail->next;
 	}
 	return (1);
 }
