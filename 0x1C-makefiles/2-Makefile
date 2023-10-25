@@ -1,6 +1,6 @@
-CC="gcc"
-SRC="main.c school.c"
-OBJ="main.o school.o"
+CC = gcc
+SRC = main.c school.c
+OBJ = main.o school.o
 all: school
 school:
 	$(CC) -c -o $(OBJ) $(SRC)
