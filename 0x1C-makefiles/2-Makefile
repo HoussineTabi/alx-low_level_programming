@@ -6,4 +6,4 @@ school:
 	$(CC) -c -o $(OBJ) $(SRC)
 	$(CC) -o school $(OBJ)
 clean:
-	rm -f schoo
+	rm -f school
