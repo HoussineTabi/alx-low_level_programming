@@ -4,7 +4,6 @@ OBJ = main.o school.o
 all: school
 school:
 	$(CC) -c -o $(OBJ) $(SRC)
-school:
 	$(CC) -o school $(OBJ)
 clean:
 	rm -f schoo $(OBJ)
