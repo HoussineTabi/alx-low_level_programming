@@ -1,7 +1,22 @@
+# This is a MakeFile
+
 CC = gcc
-SRC = main.c school.c
-all: school
-school: 
-	$(CC) $(SRC) -o school
+SRC = main.c holberton.c
+OBJ = $(SRC:%.c=%.o)
+NAME = holberton
+RM = rm -f
+
+all:	$(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
 clean:
-	rm -f school
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean:
+	$(RM) *~ $(NAME)
+	$(RM) $(OBJ)
+
+re:	oclean all
